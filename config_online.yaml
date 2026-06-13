@@ -1,0 +1,107 @@
+mode:
+  top_n: 35
+  interval: 1h
+  shard_size: 20
+  preload_candles: 1000
+mtf:
+  enabled: true
+  htf_interval: 1h
+  htf_long_min: 55
+  htf_short_max: 45
+  preload_candles_htf: 500
+risk:
+  take_profit_min_pct: 4
+  hard_stop_pct: 2
+  use_atr_stop: true
+  atr_multiplier: 2.5
+  max_stop_pct: 3
+  use_trailing: true
+  trailing_step_pct: 1
+  min_hold_minutes: 60
+  risk_per_trade_pct: 2
+  min_profit_close_pct: 2
+  trend_size_boost: 1.5
+thresholds:
+  score_long_open: 88
+  score_short_open: 100
+  score_close: 45
+limits:
+  max_trades_per_day: 8
+  max_open_positions: 4
+  daily_target_pct: 10
+  max_hold_hours: 48
+  daily_loss_limit_pct: 8
+pyramiding:
+  enabled: false
+  step_pct: 15
+  max_steps: 3
+misc:
+  starting_equity_usdt: 1000
+  volume_burst_multiplier: 1
+  min_notional_usdt: 30000
+  oco_enabled: true
+  commission_pct: 0.04
+  slippage_pct: 0.03
+btc_filter:
+  enabled: true
+  lookback_candles: 4
+  drop_pct: 1.5
+adx_filter:
+  enabled: false
+  threshold: 25
+partial_tp:
+  enabled: true
+  tp1_r_mult: 1
+  close_pct: 0.5
+quality_score:
+  enabled: true
+  min_half_pos: 6
+  min_full_pos: 8
+adaptive_risk:
+  enabled: false
+  loss3_mult: 0.75
+  loss5_mult: 0.5
+  loss8_mult: 0.25
+funding_filter:
+  enabled: false
+  long_max: 0.0005
+  short_min: -0.0005
+auto_symbol_filter:
+  enabled: true
+  rolling_window: 10
+  min_trades: 1
+  tier1_pct: -1
+  tier2_pct: -4
+  tier3_pct: -7
+  min_multiplier: 0.25
+  tier1_pnl: -30
+  tier2_pnl: -60
+  tier3_pnl: -100
+market_regime:
+  enabled: true
+  ema_fast: 20
+  ema_slow: 50
+  ema_long: 200
+  atr_period: 14
+  atr_mult_thresh: 1.8
+  vol_window: 20
+  vol_burst_mult: 1.5
+  min_candles: 210
+rsi_filter:
+  enabled: true
+  max_long: 73
+  min_short: 30
+atr_filter:
+  enabled: true
+  min_atr_pct: 1
+dynamic_trail:
+  atr_mult: 1
+  min_pct: 0.5
+  max_pct: 2.5
+vol_position_filter:
+  enabled: false
+  high_atr_threshold: 2.5
+  high_atr_size_mult: 0.5
+symbol_blacklist:
+  enabled: true
+  symbols: ["TAOUSDT", "SUIUSDT", "SOLUSDT"]
