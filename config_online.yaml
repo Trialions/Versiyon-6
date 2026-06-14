@@ -1,11 +1,11 @@
 mode:
-  top_n: 35
+  top_n: 25
   interval: 1h
   shard_size: 20
   preload_candles: 1000
 mtf:
   enabled: true
-  htf_interval: 1h
+  htf_interval: 4h
   htf_long_min: 55
   htf_short_max: 45
   preload_candles_htf: 500
@@ -16,20 +16,20 @@ risk:
   atr_multiplier: 2.5
   max_stop_pct: 3
   use_trailing: true
-  trailing_step_pct: 1
+  trailing_step_pct: 1.5
   min_hold_minutes: 60
-  risk_per_trade_pct: 2
+  risk_per_trade_pct: 3
   min_profit_close_pct: 2
   trend_size_boost: 1.5
 thresholds:
-  score_long_open: 88
-  score_short_open: 100
-  score_close: 45
+  score_long_open: 85
+  score_short_open: 5
+  score_close: 30
 limits:
   max_trades_per_day: 8
   max_open_positions: 4
   daily_target_pct: 10
-  max_hold_hours: 48
+  max_hold_hours: 72
   daily_loss_limit_pct: 8
 pyramiding:
   enabled: false
@@ -55,8 +55,8 @@ partial_tp:
   close_pct: 0.5
 quality_score:
   enabled: true
-  min_half_pos: 6
-  min_full_pos: 8
+  min_half_pos: 5
+  min_full_pos: 6
 adaptive_risk:
   enabled: false
   loss3_mult: 0.75
@@ -78,18 +78,17 @@ auto_symbol_filter:
   tier2_pnl: -60
   tier3_pnl: -100
 market_regime:
-  enabled: true
-  ema_fast: 20
-  ema_slow: 50
-  ema_long: 200
-  atr_period: 14
+  ema_fast: 10
+  ema_slow: 21
+  ema_long: 55
   atr_mult_thresh: 1.8
   vol_window: 20
   vol_burst_mult: 1.5
-  min_candles: 210
+  min_candles: 70
+  enabled: true
 rsi_filter:
   enabled: true
-  max_long: 73
+  max_long: 68
   min_short: 30
 atr_filter:
   enabled: true
@@ -103,5 +102,8 @@ vol_position_filter:
   high_atr_threshold: 2.5
   high_atr_size_mult: 0.5
 symbol_blacklist:
-  enabled: true
-  symbols: ["TAOUSDT", "SUIUSDT", "SOLUSDT"]
+  enabled: false
+  symbols:
+  - TAOUSDT
+  - SUIUSDT
+  - SOLUSDT
