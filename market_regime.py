@@ -122,25 +122,21 @@ class MarketRegimeDetector:
         # BEARISH: fiyat EMA200 altında VEYA çok düşük volatilite (sıkışma)
         if bearish_ema:
             regime = self.BEARISH
-        # EMA50 altına düşüş de BEARISH sayılır
-        elif atr_percentile < 20:
-            regime = self.KONSOL
-
-        # TREND: tam ema sırası + yüksek ATR değil + hacim destekliyor
+        # TREND: tam ema sırası + yüksek ATR değil
         elif full_trend and not atr_chaotic:
             regime = self.TREND
-
-        # TREND: tam ema sırası + hacim güçlü (ATR kaotik olsa bile)
+        # TREND: tam ema sırası + hacim güçlü
         elif full_trend and vol_strong:
             regime = self.TREND
-
-        # KONSOL: zayıf trend veya belirsiz durum
+        # Gerçek sıkışma: sadece çok düşük ATR
+        elif atr_percentile < 10:
+            regime = self.KONSOL
+        # KONSOL: zayıf trend
         elif weak_trend:
             regime = self.KONSOL
-
-        # KONSOL: ne tam trend ne bearish
         else:
             regime = self.KONSOL
+
 
         self._last_regime = regime
         self._last_detail = {
